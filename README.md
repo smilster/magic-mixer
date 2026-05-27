@@ -115,11 +115,8 @@ Example:
     "timeSignature": "4/4",
     "startMeasure": 0,
     "masterGain": 0.7,
-    "tracks": [
-      
-      .
-      .
-      .
+    "tracks": 
+    [
       
     ]
 }
@@ -131,7 +128,7 @@ Example:
 
 | property   | default                   | explanation                                                                                                                                                                |
 |------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `filename` |                           | this field is required                                                                                                                                                     |
+| `filename` |                           | this field is required, if no `url` is provided                                                                                                                              |
 | `url`      |                           | custom `url` if file is stored outside `songs/` structure, `filename` will then be ignored, `url` must direct to same server or to one which support cross-origin requests |
 | `label`    | generated from `filename` | displayed at the top of mixer channel                                                                                                                                      |
 | `vol`      | `-15`                     | initial volume in decibels, takes values between `-30` and `6`                                                                                                             |
