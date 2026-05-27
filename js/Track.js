@@ -9,6 +9,11 @@ const METER_SMOOTHING = 0;
 
 export class Track {
 
+    id;
+    songId;
+    url;
+
+
     constructor(trackConfig) {
 
 
@@ -28,14 +33,14 @@ export class Track {
         // mixer params
         this.vol = trackConfig.vol ?? DEFAULT_VOL;
         this.pan = trackConfig.pan ?? DEFAULT_PAN;
-        this.mute = trackConfig.mute ?? false;
+        this.mute = (trackConfig.mute && (typeof trackConfig.mute === "boolean")) ? trackConfig.mute : false; // store initial mute value here
 
         this.buffer = null;
         this.player = null;
 
         // persistent nodes
         this.volume = new Tone.Volume(this.vol);
-        this.volume.mute = this.mute;
+
 
         this.panner = new Tone.Panner(this.pan);
 

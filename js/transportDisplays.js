@@ -32,7 +32,7 @@ export function createPositionDisplay() {
 
 export function updatePositionDisplay() {
     const position = Tone.getTransport().position.split(":").map(Number)
-    positionDisplay.innerHTML = `${position[0] + activeSong.startBar}:${position[1]+1}`;
+    positionDisplay.innerHTML = `${position[0] + activeSong.startMeasure}:${position[1]+1}`;
 }
 
 export function createTimeDisplay() {

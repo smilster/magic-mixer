@@ -2,7 +2,6 @@
   "title": "Click 4/4",
   "bpm": 110,
   "timeSignature": "4/4",
-  "startBar": 1,
   "tracks": [
       {
       "label": "Click",

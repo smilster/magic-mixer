@@ -8,7 +8,7 @@ import {createTableSongSelector, highlightActiveSong} from "./songSelector.js";
 import {Mixer} from "./Mixer.js";
 
 import {transportStop} from "./transportButtons.js";
-import { configureTimeLine, updateTimelineMarker} from "./timeline.js";
+import {configureTimeLine, updateTimelineMarker} from "./timeline.js";
 import {updatePositionDisplay} from "./transportDisplays.js";
 
 import {resetBPMControls} from "./bpmControls.js";
@@ -16,28 +16,92 @@ import {timelineControls, transportControls, createTransportControls, createTime
 import {Master} from "./Master.js";
 
 
+// #######################################
+// #######################################
+// #######################################
+let defaultSongId = null;
+export let activeSong = null;
+export let playbackRate = 1;
 
 
+let magicMixerContainer;
+await initialize('magic-mixer')
 
-function initializeLayout(parentDivId) {
+
+async function initialize(magicMixerDivId) {
 
     // choir-mixer div as defined in html
-    const choirMixerContainer = document.getElementById(parentDivId);
-    choirMixerContainer.className = "flex-column w-100 minh-1vw";
-    choirMixerContainer.style.alignItems = "center";
+    magicMixerContainer = document.getElementById(magicMixerDivId);
+    magicMixerContainer.className = "flex-column w-100 minh-1vw";
+    magicMixerContainer.style.alignItems = "center";
 
+    await includeSongsFromHTML(magicMixerContainer);
 
+    magicMixerContainer.appendChild(createTableSongSelector());
 
-    // choirMixerContainer.appendChild(createFlexGap());
-    choirMixerContainer.appendChild(createTableSongSelector());
-    // choirMixerContainer.appendChild(createFlexGap());
+    await selectDefaultSong();
 
-    return  choirMixerContainer;
+    updateFastUI();
+    updateSlowUI();
+
+}
+
+/**
+ * reads children with tag SONG in container, interprets content as songId
+ * and loads them from database in directory songs/
+ *
+ * @param magicMixerContainer
+ * @returns {Promise<void>}
+ */
+async function includeSongsFromHTML(magicMixerContainer) {
+
+    let songId;
+
+    for (const child of Array.from(magicMixerContainer.children)) {
+        if (child.tagName === "SONG") {
+            try {
+                songId = child.innerHTML.trim()
+                await Song.includeFromDatabase(songId);
+                if (typeof child.getAttribute("load") === "string") defaultSongId = songId;
+            } catch (error) {
+                if (error.message === "ConfigNotFoundError") {
+                    const errorNotifier = document.createElement("div");
+                    errorNotifier.className = "container error w-80 round border center cursor-crosshair";
+                    errorNotifier.onclick = () => errorNotifier.style.display = "none";
+                    errorNotifier.innerHTML =
+                        ` Could not include song.<br>
+                          Check spelling of <b>${songId}</b>.<br>
+                          Does <b>songs/${songId}/config.json</b> exist? <br>
+            `;
+                    magicMixerContainer.appendChild(errorNotifier);
+                }
+
+            }
+        }
+
+    }
+}
+
+/**
+ * first check if there is parameter www.urlToMixer.com/?song=songId in Url
+ * if not, fall back to defaultSongId that can be picked in HTML through <song default>
+ *
+ * load song only if default exists
+ * @returns {Promise<void>}
+ */
+
+async function selectDefaultSong() {
+
+    const urlSongId = new URLSearchParams(window.location.search).get("song");
+    defaultSongId = urlSongId ? urlSongId : defaultSongId;
+
+    if (defaultSongId) await selectSong(defaultSongId);
+
 }
 
 
 
-export async function selectSong(songId, onProgress) {
+export async function selectSong(songId) {
     // If selected song is identical with active Song, do nothing
     if (activeSong && songs.get(songId) === activeSong) return;
 
@@ -49,9 +113,9 @@ export async function selectSong(songId, onProgress) {
     if (!activeSong) {
         configureTone();
         Master.connect(Tone.Destination);
-        choirMixerContainer.prepend(createTransportControls())
-        choirMixerContainer.prepend(createTimelineControls())
-        choirMixerContainer.prepend(Mixer.create())
+        magicMixerContainer.prepend(createTransportControls())
+        magicMixerContainer.prepend(createTimelineControls())
+        magicMixerContainer.prepend(Mixer.create())
     }
 
 
@@ -80,14 +144,11 @@ export async function selectSong(songId, onProgress) {
 
         await activeSong.buffer.load();
 
-        setTimeout(()=>{
+        setTimeout(() => {
             if (song === activeSong) {
                 finalizeControls();
             }
-        },700)
-
-
-
+        }, 700)
 
 
         // This ONLY runs if loadSongBuffers successfully finishes without being aborted
@@ -113,7 +174,7 @@ function finalizeControls() {
 
 }
 
-function configureTone(){
+function configureTone() {
     Tone.context._latencyHint = "playback";
     Tone.context._lookAhead = 0.06;
     Tone.context.updateInterval = 0.03
@@ -126,8 +187,6 @@ function configureTransport() {
     Tone.getTransport().loopStart = 0;
     Tone.getTransport().loopEnd = activeSong.duration;
 }
-
-
 
 
 function updateSlowUI() {
@@ -158,38 +217,9 @@ export function updateTempo(newPlaybackRate) {
     configureTimeLine()
 }
 
-// select song from url-parameters
-
-async function selectSongFromUrlParameter() {
-    const params = new URLSearchParams(window.location.search);
-    const songId = params.get("song");
-    if (songId && songs.get(songId)) {
-        await selectSong(songId)
-    }
-}
 
 
 
-
-// load some songs from database, saved in 'songs' directory
-await Song.fromSongDatabase("dontStop")
-await Song.fromSongDatabase("baraye")
-await Song.fromSongDatabase("schief")
-await Song.fromSongDatabase("hans")
-// await Song.fromSongDatabase("click-4-4")
-
-export let activeSong = null;
-export let playbackRate = 1;
-
-
-
-const   choirMixerContainer = initializeLayout('choir-mixer')
-// start gui
-updateFastUI();
-updateSlowUI();
-
-
-await selectSongFromUrlParameter();
 
 
 

@@ -8,7 +8,7 @@ import {SongBuffer} from "./SongBuffer.js";
 
 
 const DEFAULT_TIME_SIGNATURE = [4,4];
-const DEFAULT_START_BAR = 1;
+const DEFAULT_START_MEASURE = 1;
 
 const DEFAULT_MASTER_GAIN = 0.5;
 
@@ -22,7 +22,22 @@ export let songs = new Map();
 
 export class Song {
 
+    id;
+    title;
+    bpm
+    timeSignature;
+    startMeasure;
+    masterGain;
 
+    trackConfigs;
+    tracks;
+    numTracks;
+
+    duration;
+
+    isLoaded;
+    fileSize;
+    buffer;
 
     /**
      *
@@ -43,10 +58,10 @@ export class Song {
             this.timeSignature = DEFAULT_TIME_SIGNATURE;
         }
 
-       if (songConfig.startBar === undefined) {
-           this.startBar = DEFAULT_START_BAR;
+       if (songConfig.startMeasure === undefined) {
+           this.startMeasure = DEFAULT_START_MEASURE;
        } else {
-           this.startBar = parseFloat(songConfig.startBar);
+           this.startMeasure = parseFloat(songConfig.startMeasure);
        }
 
 
@@ -84,12 +99,12 @@ export class Song {
      *
      * @param id  identical with directory name of song and where to find JSON (songConfig)
      */
-    static async fromSongDatabase(id) {
+    static async includeFromDatabase(id) {
         const songConfigJson = `${SONG_DATABASE_DIR}/${id}/${SONG_CONFIG_JSON}`;
         const response = await fetch(songConfigJson,{
             cache: 'no-store',
         });
-        if (!response.ok) throw new Error(`Failed to fetch song from ${songConfigJson}`);
+        if (!response.ok) throw new Error("ConfigNotFoundError");
         const songConfig = await response.json();
         songConfig.id = id;
         return new Song(songConfig);

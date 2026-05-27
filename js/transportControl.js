@@ -32,7 +32,7 @@ export function positionToSeconds(position) {
 export function secondsToPosition(seconds,measureShift=0,showMeasureOnly = false){
 
     const position = Tone.Time(seconds).toBarsBeatsSixteenths().split(":").map(Number);
-    const measure = position[0] + activeSong.startBar + measureShift;
+    const measure = position[0] + activeSong.startMeasure + measureShift;
     if (showMeasureOnly) {
         return measure.toString();
     }

@@ -16,6 +16,8 @@ body {
 }
 
 
+
+
 /* ==========================================
    COLOR VARIABLES
    ========================================== */
@@ -192,6 +194,19 @@ body {
 .shadow-dark {
     box-shadow: var(--box-shadow) var(--color-dark);
 }
+
+/* hide HTML elements for song loading */
+song {
+    display: none;
+}
+
+.error {
+    text-transform: none !important;
+    background-color: var(--color-red) !important;
+    color: var(--color-bright) !important;;
+}
+
+
 
 
 /* S O N G   S E L E C T O R*/
@@ -573,6 +588,10 @@ body {
 
 .btn {
     cursor: pointer;
+}
+
+.cursor-crosshair {
+    cursor: crosshair !important;
 }
 
 .invertY {

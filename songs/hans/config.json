@@ -2,7 +2,7 @@
   "title": "Da Hans im Schnoogeloch",
   "bpm": 110,
   "timeSignature": "4/4",
-  "startBar": 0,
+  "startMeasure": 0,
   "masterGain": 0.5,
   "tracks": [
     {

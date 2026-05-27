@@ -5,6 +5,9 @@ const DB_MIN_VOLUME = -30;
 const DB_MAX_VOLUME = 6;
 const DB_RANGE_VOLUME = DB_MAX_VOLUME - DB_MIN_VOLUME;
 
+const MASTER_MIN_GAIN = 0;
+const MASTER_MAX_GAIN = 1.5;
+
 
 const DB_MIN_METER = -50;
 const DB_MAX_METER = 0;
@@ -207,8 +210,10 @@ export class Mixer{
         volumeSlider.step = '0.01';
 
         if (isMaster){
-            volumeSlider.max = "1.5";
-            volumeSlider.min = "0";
+            vol = Math.min(vol,MASTER_MAX_GAIN);
+            vol = Math.max(vol,MASTER_MIN_GAIN);
+            volumeSlider.max = MASTER_MAX_GAIN.toString();
+            volumeSlider.min = MASTER_MIN_GAIN.toString();
             volumeSlider.value = vol.toString();
             setVol(vol);
 
@@ -218,6 +223,9 @@ export class Mixer{
                 setVol(vol)
             })
         } else {
+            vol = Math.min(vol,DB_MAX_VOLUME);
+            vol = Math.max(vol,DB_MIN_VOLUME);
+
             volumeSlider.max = DB_MAX_VOLUME.toString();
             volumeSlider.min = DB_MIN_VOLUME.toString();
             volumeSlider.value = vol.toString();
@@ -264,8 +272,8 @@ export class Mixer{
             }
         }
 
-        if (track.volume.mute) {
-            track.volume.mute = false
+        // check if track is initially muted
+        if (track.mute) {
             muteButton.click();
         }
 
