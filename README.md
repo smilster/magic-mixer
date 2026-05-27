@@ -145,10 +145,10 @@ Example:
     "tracks": 
     [
       {
-      "label": "Michael",
-      "filename": "vocals.mp3",
-      "pan": -0.5,
-      "vol": -5
+        "label": "Michael",
+        "filename": "vocals.mp3",
+        "pan": -0.5,
+        "vol": -5
       },
       {
         "filename": "guitar.mp3",

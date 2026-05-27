@@ -12,7 +12,7 @@ const LABEL_CLASS_NAME_RED = LABEL_CLASS_NAME +"red";
 const LABEL_CLASS_NAME_BRIGHT = LABEL_CLASS_NAME +"bright";
 const LABEL_CLASS_NAME_LIGHTER_GRAY = LABEL_CLASS_NAME +"lighter-gray";
 
-const UPDATE_DELAY = 300; // in milliseconds
+const UPDATE_DELAY = 200; // in milliseconds
 
 
 
