@@ -44,7 +44,7 @@ https://smilster.github.io/magic-mixer
 Your folder structure  should look like this:
 
 ```tree
-:
+.
 ├── index.html
 └── songs
 |   ├── newSong
@@ -52,7 +52,6 @@ Your folder structure  should look like this:
 |   │   ├── vocals.mp3
 |   │   ├── guitar.mp3
 |   │   └── drums.mp3
-:
 ```
 
 Add the song to your `index.html`. Look for the element with id `magic-mixer`. Each `<song>` tag will be read and its content must match the `songId` (song folder name), e.g., `newSong` in this case:
@@ -117,7 +116,9 @@ Example:
     "masterGain": 0.7,
     "tracks": 
     [
-      
+      {
+        "filename": "..."
+      }
     ]
 }
 ```
@@ -138,7 +139,7 @@ Example:
 
 Example:
 
-
+`config.json`
 ```json 
 {
     "title": "My New Song",
@@ -167,7 +168,7 @@ Example:
 
 ### Run Locally
 
-If you want to run hte Magic Mixer locally, you must launch a simple server, e.g.,
+If you want to run the Magic Mixer locally, you must launch a simple server, e.g.,
 
 `python -m RangeHTTPServer` or `python -m SimpleHTTPServer`
 

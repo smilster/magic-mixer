@@ -354,7 +354,7 @@ song {
     will-change: transform;
     transform-origin: bottom;
     transform: scaleY(0);
-    transition: transform 0.15s linear, background-color 0.15s linear;
+    transition: transform 0.2s linear, background-color 0.2s linear;
     /* Cross-browser hardware acceleration */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;

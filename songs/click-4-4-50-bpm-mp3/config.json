@@ -1,0 +1,12 @@
+{
+  "title": "Click 4/4",
+  "bpm": 50,
+  "timeSignature": "4/4",
+  "tracks": [
+    {
+      "label": "Click",
+      "filename": "piano_session_click.mp3",
+      "vol": 0
+    }
+  ]
+}
