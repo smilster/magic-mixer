@@ -9,28 +9,28 @@
       "filename": "s2.mp3",
       "label": "Sopran",
       "vol": -10,
-      "pan": -0.4,
+      "pan": -0.5,
       "mute": false
     },
     {
       "filename": "a2.mp3",
       "label": "Alt",
-      "vol": -10,
-      "pan": -0.2,
+      "vol": -5,
+      "pan": -0.25,
       "mute": false
     },
     {
       "filename": "t2.mp3",
       "label": "Tenor",
-      "vol": -10,
-      "pan": 0.2,
+      "vol": -5,
+      "pan": 0.25,
       "mute": false
     },
     {
       "filename": "b2.mp3",
       "label": "Bass",
       "vol": -10,
-      "pan": 0.4,
+      "pan": 0.5,
       "mute": false
     }
   ]
