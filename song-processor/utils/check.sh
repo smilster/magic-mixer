@@ -3,6 +3,7 @@
 check_all_dependencies(){
 
   check_dependency ffmpeg
+  check_dependency ffprobe
   check_dependency rubberband
   check_dependency awk
   check_dependency sed
@@ -11,6 +12,17 @@ check_all_dependencies(){
 
   success "All checks passed."
 }
+
+check_config_dependencies(){
+
+  check_dependency awk
+  check_dependency sed
+  check_dependency jq
+  check_dependency ffprobe
+
+  success "All checks passed."
+}
+
 
 
 is_number() {

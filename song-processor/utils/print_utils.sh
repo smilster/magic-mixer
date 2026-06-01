@@ -1,27 +1,27 @@
 # Colors
-RED='\033[0;31m'
-YELLOW='\033[0;33m'
-BLUE='\033[0;34m'
-GREEN='\033[0;32m'
+RED='\033[1;31m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+GREEN='\033[1;32m'
 RESET='\033[0m'
 
 fatal() {
-  echo -e "${RED}[FATAL] $1${RESET}"
-  echo -e "${RED}[EXIT]${RESET}"
+  echo -e "${RED}[F A T A L] $1${RESET}"
+  echo -e "${RED}[E R R O R] ${RESET}"
   echo
   exit 1
 }
 
 warning() {
-  echo -e "${YELLOW}[WARNING]${RESET} $1"
+  echo -e "${YELLOW}[ WARNING ]${RESET} $1"
 }
 
 info() {
-  echo -e "${BLUE}[INFO]${RESET} $1"
+  echo -e "${BLUE}[ I N F O ]${RESET} $1"
 }
 
 success() {
-  echo -e "${GREEN}[SUCCESS]${RESET} $1"
+  echo -e "${GREEN}[ SUCCESS ]${RESET} $1"
 }
 
 printHTML () {

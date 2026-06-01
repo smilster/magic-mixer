@@ -1,14 +1,17 @@
 #source print_utils.sh;
 #source audio_processor.sh
 
+CONFIG_SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+
 SONG_CONFIG_JSON="config.json";
-DEFAULT_SONG_JSON="default_song.json"
-DEFAULT_TRACK_JSON="default_track.json";
+DEFAULT_SONG_JSON="$CONFIG_SCRIPT_DIR/default_song.json"
+DEFAULT_TRACK_JSON="$CONFIG_SCRIPT_DIR/default_track.json";
 
 gen_track_config() {
   local filename="$1";
   local label="${filename%.*}";
-  label="${label:0:8}";
+  label="${label: -8}";
 
   local track_config;
   track_config="$(<$DEFAULT_TRACK_JSON)";
@@ -79,7 +82,10 @@ change_config_key(){
   local key="$2"
   local value="$3"
 
-  jq ".$key = $value" "$input_dir/$SONG_CONFIG_JSON" > "$input_dir/tmp.json"
+  jq --arg key "$key" --arg value "$value" \
+   '.[$key] = $value' \
+   "$input_dir/$SONG_CONFIG_JSON" > "$input_dir/tmp.json"
+
   mv "$input_dir/tmp.json" "$input_dir/$SONG_CONFIG_JSON"
 
 }
