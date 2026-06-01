@@ -51,7 +51,7 @@ export class Song {
 
 
         this.title = songConfig.title || songConfig.id;
-        this.bpm = Number(songConfig.bpm)
+        this.bpm = parseFloat(songConfig.bpm)
         if (songConfig.timeSignature) {
             this.timeSignature = songConfig.timeSignature.split("/")
         } else {
@@ -66,7 +66,7 @@ export class Song {
 
 
 
-        this.masterGain = songConfig.masterGain ? songConfig.masterGain : DEFAULT_MASTER_GAIN;
+        this.masterGain = songConfig.masterGain ? parseFloat(songConfig.masterGain) : DEFAULT_MASTER_GAIN;
 
 
         this.trackConfigs = songConfig.tracks;

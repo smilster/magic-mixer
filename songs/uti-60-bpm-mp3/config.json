@@ -1,33 +1,33 @@
 {
   "title": "Uti Vår Hage",
-  "bpm": 120,
+  "bpm": 60,
   "timeSignature": "3/4",
   "startMeasure": 1,
   "masterGain": 1,
   "tracks": [
     {
-      "filename": "s2.wav",
+      "filename": "s2.mp3",
       "label": "Sopran",
       "vol": -10,
       "pan": -0.5,
       "mute": false
     },
     {
-      "filename": "a2.wav",
+      "filename": "a2.mp3",
       "label": "Alt",
       "vol": -5,
       "pan": -0.25,
       "mute": false
     },
     {
-      "filename": "t2.wav",
+      "filename": "t2.mp3",
       "label": "Tenor",
       "vol": -5,
       "pan": 0.25,
       "mute": false
     },
     {
-      "filename": "b2.wav",
+      "filename": "b2.mp3",
       "label": "Bass",
       "vol": -10,
       "pan": 0.5,
