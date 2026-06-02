@@ -46,10 +46,9 @@ https://smilster.github.io/magic-mixer
  Create a directory in `songs/`. The directory name will be the unique `songId` for the Magic Mixer. Place all your audio files inside your new folder.
  
 
-You may either create manually a `congig.js` inside, or use the provided `song-processor`. For general understanding and manual setup, please read below. For automated setup, please refer to LINK_TO_SONG_RPOCESSOR_README
+You may either create manually a `congig.js` inside, or use the provided `song-processor`. For general understanding and manual setup, please read below. For automated setup, please refer to the `song-processor`[README.m](https://github.com/smilster/magic-mixer/blob/main/song-processor/README.md).
 
-
-Your folder structure  should look like this:
+In any case, your folder structure might look like this:
 
 ```tree
 .
@@ -74,7 +73,7 @@ Add the song to your `index.html`. Look for the element with id `magic-mixer`. E
 </div>
 ```
 
-Note that the `load` attribute defines the song to be loaded directly on startup. If `load` is not provided, the user will only see the song selector.
+Note that the `load` attribute defines the song to be loaded directly on startup. If `load` is not provided, the user will see the song selector and the mixer starts on selecting a song from the list.
 
 
 The song config file ``songs/myNewSong/config.json`` stores song and track information. The minimal song setup to include tracks should look like this:
@@ -182,22 +181,14 @@ If you want to run the Magic Mixer locally, you must launch a simple server, e.g
 
 ### Known Issues
 
-#### Windows 10 with Edge
+#### Windows 10 
 
-- might not decode m4a files -> mp3s work
+- might not decode m4a files -> mp3s work, (mp4 not tested)
 
 #### old iPhones, Safari, Opera
-- issues with vertical `<input>` or `writing-mode: lr` -> needs to be replaced by custom volume slider div 
+- issues with vertical `<input>` or `writing-mode: lr` -> needs to be replaced by *simpler* css-based volume slider  
 
-#### Linux, Chromium, Firefox 
 
-- initial sound stuttering (perhaps just bad sound card or system audio configurations)
-
-    -> apparently gone with new audio buffering
-
-#### Apple devices
-
-- usually don't decode ogg files (-> m4a is the smallest solution, mp3 is also very good)
 
 
 

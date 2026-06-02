@@ -21,6 +21,8 @@ Brackets denote versions the script was tested with. It should work with lower v
 - ffmpeg (8.1.1)
 - rubberband (4.0.0)
 
+You also need the encoders and decoders for thr respective audio file formats (e.g. libmp3lame for `.mp3`, AAC for `.mp4`)
+
 ### `create_default_config.sh`
 
 | flag              | description                                                           |
@@ -61,6 +63,17 @@ create_default_config.sh \
 |   │   └── config.json
 ```
 
+The current very low compression is defined in 
+
+[song-processor/utils/audio_processor.sh](https://github.com/smilster/magic-mixer/blob/main/song-processor/utils/audio_processor.sh)
+
+```bash
+BIT_RATE="32k"
+SAMPLE_RATE=44100
+CHANNELS=1
+```
+
+and default format is `.mp3`, but `.mp4` is also supported.
 
 
 ### `stretch_and_compress.sh`
