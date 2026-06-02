@@ -25,15 +25,13 @@ You also need the encoders and decoders for thr respective audio file formats (e
 
 ### `create_default_config.sh`
 
+
 | flag              | description                                                           |
 |-------------------|-----------------------------------------------------------------------|
 | `--songId`        | song id / directory in `songs`                                        |
 | `--bpm`           | beats per minute of recorded song                                     |
 | `--timeSignature` | time signature of your song (signature changes are not supported yet) |
-| `--file_format`   | output audio format for compressed songs                              |
-| `--masterGain`    | NOT implemented, will be ignored, adjust manually in `config.json`    |
-| `--startMeasure`  | NOT implemented, will be ignored, adjust manually in `config.json`    |
-| `--title`         | NOT implemented, will be ignored, adjust manually in `config.json`    |
+|                   |                                                                       |
 
 
 You just exported synchronous audio files and placed them in the `songs` folder. The Magic Mixer needs the song config, `config.json`, to work, and this script will set up your song with default song and track properties. So let's assume your file structure looks like this:
@@ -83,7 +81,10 @@ and default format is `.mp3`, but `.mp4` is also supported.
 | `--songId`        | song id / directory in `songs`                                        |
 | `--bpm`           | beats per minute of recorded song                                     |
 | `--timeSignature` | time signature of your song (signature changes are not supported yet) |
-|                   |                                                                       |
+| `--file_format`   | output audio format for compressed songs                              |
+| `--masterGain`    | NOT implemented, will be ignored, adjust manually in `config.json`    |
+| `--startMeasure`  | NOT implemented, will be ignored, adjust manually in `config.json`    |
+| `--title`         | NOT implemented, will be ignored, adjust manually in `config.json`    |
 
 #### Compressing
 
