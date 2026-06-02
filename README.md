@@ -16,20 +16,24 @@ The underlying audio engine, [Tone.js 15.3.5](https://tonejs.github.io/), is inc
 https://smilster.github.io/magic-mixer
 
 ### Features
-
+#### Frontend / UI
 - Multi-track mixing, adjust volume, panning or mute 
 - Transport control and interactive timeline 
 - Loop regions by click-and-drag/swipe (timeline)
 - Real-time tempo tuning
 - Song selection
 
-### planned features
+#### Backend / Song Processor
 
-- correct transport position display for songs that change timeSignature
-- synthesizer click
-- solo buttons
-- track resolved pitch detection (sounds a bit cpu heavy though)
-- add duration (bars:measure) to song selector after track has been loaded
+- Compress audio files
+- Stretch tracks to target tempo at high quality
+- Optimized for multi-track playback and fast downloads
+- Autogenerate song configs compatible with the Magic Mixer
+
+See [README.m](https://github.com/smilster/magic-mixer/blob/main/song-processor/README.md) of `song-processor`
+
+
+
 
 ### Magic Mixer with own songs
 
@@ -178,6 +182,14 @@ Example:
 If you want to run the Magic Mixer locally, you must launch a simple server, e.g.,
 
 `python -m RangeHTTPServer` or `python -m SimpleHTTPServer`
+
+### planned features
+
+- correct transport position display for songs that change timeSignature
+- synthesizer click
+- solo buttons
+- track resolved pitch detection (sounds a bit cpu heavy though)
+- add duration (bars:measure) to song selector after track has been loaded
 
 ### Known Issues
 

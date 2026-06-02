@@ -3,7 +3,7 @@
 The `song-processor` utilities support you with the setting up your Magic Mixer:
 
 - Compress audio files  
-- Stretch tracks to target tempo
+- Stretch tracks to target tempo at high quality
 - Optimized for multi-track playback and fast downloads
 - Autogenerate song configs compatible with the Magic Mixer
 
