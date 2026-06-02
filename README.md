@@ -30,7 +30,7 @@ https://smilster.github.io/magic-mixer
 - Optimized for multi-track playback and fast downloads
 - Autogenerate song configs compatible with the Magic Mixer
 
-See [README.m](https://github.com/smilster/magic-mixer/blob/main/song-processor/README.md) of `song-processor`
+See [README.md](https://github.com/smilster/magic-mixer/blob/main/song-processor/README.md) of `song-processor`
 
 
 
@@ -50,7 +50,7 @@ See [README.m](https://github.com/smilster/magic-mixer/blob/main/song-processor/
  Create a directory in `songs/`. The directory name will be the unique `songId` for the Magic Mixer. Place all your audio files inside your new folder.
  
 
-You may either create manually a `congig.json` inside, or use the provided `song-processor`. For general understanding and manual setup, please read below. For automated setup, please refer to the `song-processor`[README.m](https://github.com/smilster/magic-mixer/blob/main/song-processor/README.md).
+You may either create manually a `congig.json` inside, or use the provided `song-processor`. For general understanding and manual setup, please read below. For automated setup, please refer to the `song-processor`[README.md](https://github.com/smilster/magic-mixer/blob/main/song-processor/README.md).
 
 In any case, your folder structure might look like this:
 
