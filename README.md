@@ -2,7 +2,13 @@
 
 **Mix - Loop - Tempo**
 
-The **Magic Mixer** is a web-based tool for music rehearsal. It runs entirely in the browser and is designed to provide a cross-platform user interface for synchronous multi-track playback. The mixer features basic volume, pan and transport control, and allows for song selection, looping passages and changing the tempo on the fly.
+The **Magic Mixer** is a web-based tool for music rehearsal. It runs entirely in the browser and is designed to provide a cross-platform user interface for synchronous multi-track playback that is easy to deploy.
+
+While the interface is primarily targeted to users who cannot or don't want to use a fully-featured DAW for multi-track mixing, it also allows composers, band or choir leaders to share tracks/singalongs in an interactive manner, i.e., perfect for rehearsal or exploration of different mixes.
+
+The mixer features basic volume, pan and transport control, and allows for song selection, looping passages and changing the tempo on the fly.
+
+The insertion of own songs is facilitated by the `song-processor` utilities, automating the audio compression, generating mandatory song config files and even tempo stretching at high quality (`rubberband`).  
 
 The underlying audio engine, [Tone.js 15.3.5](https://tonejs.github.io/), is included in `lib/tone@15.3.5`, ensuring the Magic Mixer works independently of external sources. 
 
@@ -22,7 +28,6 @@ https://smilster.github.io/magic-mixer
 - correct transport position display for songs that change timeSignature
 - synthesizer click
 - solo buttons
-- backend build (ffmpeg, rubberband) to autogenerate songs at different tempi (better quality than GrainPlayer)
 - track resolved pitch detection (sounds a bit cpu heavy though)
 - add duration (bars:measure) to song selector after track has been loaded
 
@@ -38,7 +43,10 @@ https://smilster.github.io/magic-mixer
 
 #### Song Setup
 
- Create a directory in `songs/`. The directory name will be the unique `songId` for the Magic Mixer. Place all your audio files inside your new folder and also create `congig.js` in there.
+ Create a directory in `songs/`. The directory name will be the unique `songId` for the Magic Mixer. Place all your audio files inside your new folder.
+ 
+
+You may either create manually a `congig.js` inside, or use the provided `song-processor`. For general understanding and manual setup, please read below. For automated setup, please refer to LINK_TO_SONG_RPOCESSOR_README
 
 
 Your folder structure  should look like this:
