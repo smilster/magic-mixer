@@ -23,7 +23,7 @@ https://smilster.github.io/magic-mixer
 - Real-time tempo tuning
 - Song selection
 
-#### Backend / Song Processor
+#### Build Utility / Song Processor
 
 - Compress audio files
 - Stretch tracks to target tempo at high quality
